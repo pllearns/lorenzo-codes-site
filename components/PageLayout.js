@@ -1,46 +1,19 @@
-import Head from 'next/head'
-import Nav from '../components/Nav'
-import HeroGrid from '../components/HeroGrid'
-import { urlObjectKeys } from 'next/dist/next-server/lib/utils'
+import Nav from './Nav'
 
-export default function Home() {
+export default function Layout(props) {
   return (
     <div className="container">
-      <Head>
-        <title>Phil Lorenzo</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Nav />
       <main>
-        <HeroGrid style={{ 
-          backgroundImage: "url('/ghost.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}>
-          <h1><a href="/gameplay">Gameplay</a></h1>
-        </HeroGrid>
-        <br/>
-        <HeroGrid style={{ 
-            backgroundColor: '#000000'
-        }}>
-          <h1><a href="/projects">Projects</a></h1>
-        </HeroGrid>
-        <br/>
-        <HeroGrid style={{ 
-            backgroundColor: "#800080"
-          }}>
-            <h1>Blog</h1>
-        </HeroGrid>
+        {props.children}
       </main>
-
       <footer>
           Connect {' '}
           <a href="https://www.twitch.tv/philhascode" rel="noreferrer noopener" target="_blank"><img src="/TwitchGlitchPurple.svg" alt="Twitch Logo" className="logo" /></a>
           <a href="https://github.com/pllearns" rel="noreferrer noopener" target="_blank"><img src="/github.png" alt="Github Logo" className="logo" /></a>
           <a href="https://medium.com/@phill.lorenzo" rel="noreferrer noopener" target="_blank"><img src="/Monogram.png" alt="Github Logo" className="logo" /></a>
       </footer>
-
-      <style jsx>{`
+    <style jsx>{`
         .container {
           min-height: 100vh;
           display: gird;
@@ -108,7 +81,7 @@ export default function Home() {
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family: carriosGothic, Menlo, Monaco, Lucida Console, Liberation Mono,
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
         }
 
@@ -152,15 +125,15 @@ export default function Home() {
             flex-direction: column;
           }
         }
-      `}</style>
-
+      `}
+      </style>
       <style jsx global>{`
-        @import url(//fonts.googleapis.com/css2?family=Questrial&display=swap);
+       @import url(//fonts.googleapis.com/css2?family=Questrial&display=swap);
         html,
         body {
           padding: 0;
           margin: 0;
-          font-family: 'Questrial', cursive, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+          font-family: 'Questrial', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
         }
@@ -168,7 +141,7 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
-      `}</style>
-    </div>
+      `}</style>      
+    </div>    
   )
 }

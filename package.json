@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8080",
+    "gcp-build": "npm run build",
+    "deploy": "gcloud config set project lorenzocodes && gcloud app deploy app.yaml --version=0-1-0"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "next": "9.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1"
